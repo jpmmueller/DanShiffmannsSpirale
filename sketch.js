@@ -54,12 +54,23 @@ function draw() {
     circle(x, y, stepSize * 0.5);
   }
 
+
+
   // Connect current to previous with a line
   line(x, y, px, py);
   px = x;
   py = y;
 
   // Move according to state
+
+
+  // Are we done?
+  if (step > totalSteps) {
+    noLoop();
+  }
+}
+
+function mousePressed(){
   switch (state) {
     case 0:
       x += stepSize;
@@ -84,9 +95,5 @@ function draw() {
     }
   }
   step++;
-
-  // Are we done?
-  if (step > totalSteps) {
-    noLoop();
-  }
+  console.log("Step: " + step, "numSteps: " + numSteps, "State: " + state);
 }
